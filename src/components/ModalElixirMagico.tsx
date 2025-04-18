@@ -11,7 +11,7 @@ export default function ModalElixirMagico() {
         onClick={() => setOpen(true)}
         className="px-6 py-3 bg-purple-700 hover:bg-purple-800 text-white rounded-full shadow-lg flex items-center gap-2"
       >
-        <Flame size={18} /> Ver Módulos de Magia
+        <Flame size={18} /> Grimório do Aprendiz
       </button>
 
       <AnimatePresence>
@@ -30,20 +30,18 @@ export default function ModalElixirMagico() {
               className="bg-[#111] text-white max-w-md w-full p-6 rounded-2xl shadow-xl border border-purple-800 relative"
               style={{ boxShadow: '0 0 40px rgba(168, 85, 247, 0.3)' }}
             >
-              <h2 className="text-2xl font-bold text-purple-400 mb-4">Módulos de Treinamento em Magia... digo, Elixir</h2>
-              <ul className="space-y-2 text-sm text-gray-300">
-                <li>✨ Introdução à Magia Funcional
-                </li>
-                <li>✨ Conjurando Funções Imutáveis</li>
-                <li>✨ Processos Leves e Rituais Confiáveis</li>
-                <li>✨ Feitiços com Phoenix e LiveView</li>
-              </ul>
+              <img src='/grimorio-capa.png' alt="Grimório" className="w-full h-auto rounded-lg mb-4" />
               <button
                 onClick={() => setOpen(false)}
-                className="mt-6 w-full py-2 bg-purple-700 hover:bg-purple-800 text-white rounded"
+                className="mt-6 w-40 py-2 bg-purple-700 hover:bg-purple-800 text-white rounded"
               >
                 Fechar o Grimório
               </button>
+              <a href="https://prog-aprendiz-book.henriquesilva.dev/" target="_blank" rel="noopener noreferrer"            
+                className="mt-10 ml-20 w-full py-2 px-5 bg-purple-700 hover:bg-purple-800 text-white rounded"
+              >
+                Abrir o Grimório
+              </a>
             </motion.div>
           </motion.div>
         )}

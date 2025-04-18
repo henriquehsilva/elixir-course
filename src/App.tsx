@@ -320,9 +320,7 @@ function App() {
           </div>
         </div>
         <div className="my-8 flex justify-center">
-          <a href="https://prog-aprendiz-book.henriquesilva.dev/" target="_blank" rel="noopener noreferrer" className="px-6 py-3 bg-purple-700 hover:bg-purple-800 text-white rounded-full shadow-lg flex items-center gap-2">
-            <BookOpen size={18} /> O GRIMÓRIO DO APRENDIZ
-          </a>
+          <ModalElixirMagico />
         </div>
         <div className="border-t border-[#8B5CF6] mt-5 pt-3 pb-2 pl-5 text-xs text-gray-600 margin-left-4">
           <p>© {new Date().getFullYear()} Henrique Silva Dev. Todos os direitos reservados.</p>
