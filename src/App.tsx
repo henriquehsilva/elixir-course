@@ -34,7 +34,7 @@ const lessons: Lesson[] = Array.from({ length: 20 }, (_, i) => ({
   ][i % 10]}`,
   duration: ['0:53'][i % 10],
   thumbnail: '/elixir-cover.png',
-  videoUrl: `/movies/elixir-${i + 1}.mp4`,
+  videoUrl: `https://elixir-movies.s3.us-east-2.amazonaws.com/elixir-${i + 1}.mp4`,
   videoTrack: `/translates/elixir-${i + 1}.vtt`,
   description: [
     '',
@@ -179,7 +179,7 @@ function App() {
           </div>
         </div>
       </header>
-
+      <br />
       {/* Main Content */}
       <div className="container mx-auto pt-16 px-4 flex flex-col lg:flex-row gap-6">
         {/* Video Section */}
