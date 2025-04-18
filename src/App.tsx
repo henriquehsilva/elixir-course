@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Search, Linkedin, Youtube, Instagram , ChevronRight, X, MessageCircle, Book, BookOpen } from 'lucide-react';
+import { collection, addDoc } from 'firebase/firestore';
 import { db } from './firebase';
-import ModalElixirMagico from './components/ModalElixirMagico'; // ajuste o caminho se necessário
 
 import Aula1 from './lessons/aula-1';
 import Aula2 from './lessons/aula-2';
@@ -14,10 +14,10 @@ interface Lesson {
   videoTrack: string;
   thumbnail: string;
   description: string;
-  codeSnippet: string;
+  codeSnippet: () => JSX.Element;
 }
 
-const mockLessons: Lesson[] = Array.from({ length: 20 }, (_, i) => ({
+const lessons: Lesson[] = Array.from({ length: 20 }, (_, i) => ({
   id: i + 1,
   title: `Aula ${i + 1}: ${[
     'A Jornada Elixir',
@@ -53,11 +53,12 @@ const mockLessons: Lesson[] = Array.from({ length: 20 }, (_, i) => ({
 }));
 
 function App() {
-  const [currentLesson, setCurrentLesson] = useState(mockLessons[0]);
+  const [currentLesson, setCurrentLesson] = useState(lessons[0]);
   const [isPlaying, setIsPlaying] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
+  const CodeSnippetComponent = currentLesson.codeSnippet;
 
-  const filteredLessons = mockLessons.filter(lesson =>
+  const filteredLessons = lessons.filter(lesson =>
     lesson.title.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
@@ -195,7 +196,11 @@ function App() {
             <p className="mt-4 text-gray-300">{currentLesson.description}</p>
 
             {/* Code Block */}            
-            <currentLesson.codeSnippet />
+            {CodeSnippetComponent && typeof CodeSnippetComponent === 'function' && (
+              <div className="mt-4">
+                <CodeSnippetComponent />
+              </div>
+            )}
           </div>
         </main>
 
@@ -319,9 +324,9 @@ function App() {
             </div>
           </div>
         </div>
-        <div className="my-8 flex justify-center">
+        {/* <div className="my-8 flex justify-center">
           <ModalElixirMagico />
-        </div>
+        </div> */}
         <div className="border-t border-[#8B5CF6] mt-5 pt-3 pb-2 pl-5 text-xs text-gray-600 margin-left-4">
           <p>© {new Date().getFullYear()} Henrique Silva Dev. Todos os direitos reservados.</p>
         </div>
