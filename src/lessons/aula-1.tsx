@@ -1,8 +1,6 @@
 import { ClipboardCopy, Flame, PlayCircle, FileCode2, Laptop, Apple, Terminal, Monitor } from 'lucide-react';
-import Image from 'next/image';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@radix-ui/react-accordion';
 import CommentSection from '../components/CommentSection';
-import { db } from './firebase';
 
 export default function Aula1() {
   return (

@@ -21,7 +21,7 @@ const lessons: Lesson[] = Array.from({ length: 20 }, (_, i) => ({
   id: i + 1,
   title: `Aula ${i + 1}: ${[
     'A Jornada Elixir',
-    'Configuração do Ambiente',
+    'A Essência de Elixir',
     'Configuração do Ambiente',
     'Types e Interfaces',
     'Generics Avançados',
@@ -32,13 +32,13 @@ const lessons: Lesson[] = Array.from({ length: 20 }, (_, i) => ({
     'TypeScript com React',
     'Testes com Jest'
   ][i % 10]}`,
-  duration: ['0:53'][i % 10],
+  duration: ['2:03', '4:35'][i % 10],
   thumbnail: '/elixir-cover.png',
   videoUrl: `https://elixir-movies.s3.us-east-2.amazonaws.com/elixir-${i + 1}.mp4`,
   videoTrack: `/translates/elixir-${i + 1}.vtt`,
   description: [
     '',
-    '"Olá, Mundo!" é tradicionalmente o primeiro programa ao se começar a programar em uma nova linguagem ou ambiente.',
+    '',
     'Configuração do Ambiente',
     'Types e Interfaces',
     'Generics Avançados',
@@ -185,9 +185,13 @@ function App() {
         {/* Video Section */}
         <main className="flex-1">
           <div className="aspect-video bg-[#1f1f1f] rounded-lg relative group">
-            <video controls className="w-full h-full rounded-lg" poster={currentLesson.thumbnail}>
+            <video key={currentLesson.videoUrl}
+              controls
+              className="w-full h-full rounded-lg"
+              poster={currentLesson.thumbnail}
+            >
               <source src={currentLesson.videoUrl} type="video/mp4" />
-            </video>
+            </video>          
           </div>
 
           <div className="mt-6">
@@ -213,7 +217,7 @@ function App() {
             <br />
             <h2 className="text-xl font-bold mb-4">Lista de Aulas</h2>
             <div className="space-y-4">
-              {filteredLessons.slice(0, 1).map(lesson => (
+              {filteredLessons.slice(0, 2).map(lesson => (
                 <button
                   key={lesson.id}
                   onClick={() => setCurrentLesson(lesson)}
