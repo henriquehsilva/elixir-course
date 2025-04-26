@@ -5,6 +5,7 @@ import { db } from './firebase';
 
 import Aula1 from './lessons/aula-1';
 import Aula2 from './lessons/aula-2';
+import Aula3 from './lessons/aula-3';
 
 interface Lesson {
   id: number;
@@ -22,7 +23,7 @@ const lessons: Lesson[] = Array.from({ length: 20 }, (_, i) => ({
   title: `Aula ${i + 1}: ${[
     'A Jornada Elixir',
     'A Essência de Elixir',
-    'Configuração do Ambiente',
+    'Introdução',
     'Types e Interfaces',
     'Generics Avançados',
     'Decorators',
@@ -32,14 +33,14 @@ const lessons: Lesson[] = Array.from({ length: 20 }, (_, i) => ({
     'TypeScript com React',
     'Testes com Jest'
   ][i % 10]}`,
-  duration: ['2:03', '4:35'][i % 10],
+  duration: ['2:03', '4:35', '2:22'][i % 10],
   thumbnail: '/elixir-cover.png',
   videoUrl: `https://elixir-movies.s3.us-east-2.amazonaws.com/elixir-${i + 1}.mp4`,
   videoTrack: `/translates/elixir-${i + 1}.vtt`,
   description: [
     '',
     '',
-    'Configuração do Ambiente',
+    '',
     'Types e Interfaces',
     'Generics Avançados',
     'Decorators',
@@ -49,7 +50,7 @@ const lessons: Lesson[] = Array.from({ length: 20 }, (_, i) => ({
     'TypeScript com React',
     'Testes com Jest'
   ][i % 10],
-  codeSnippet: [Aula1, Aula2][i % 2],
+  codeSnippet: [Aula1, Aula2, Aula3 ][i % 10],
 }));
 
 function App() {
@@ -217,7 +218,7 @@ function App() {
             <br />
             <h2 className="text-xl font-bold mb-4">Lista de Aulas</h2>
             <div className="space-y-4">
-              {filteredLessons.slice(0, 2).map(lesson => (
+              {filteredLessons.slice(0, 3).map(lesson => (
                 <button
                   key={lesson.id}
                   onClick={() => setCurrentLesson(lesson)}
