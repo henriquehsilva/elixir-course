@@ -22,7 +22,7 @@ interface Lesson {
 const lessons: Lesson[] = Array.from({ length: 20 }, (_, i) => ({
   id: i + 1,
   title: `Aula ${i + 1}: ${[
-    'A Jornada Elixir',
+    'Introdução à Programação com Tio Rick',
     'A Essência de Elixir',
     'Introdução',
     'IEX e o Mundo Mágico',
@@ -36,7 +36,7 @@ const lessons: Lesson[] = Array.from({ length: 20 }, (_, i) => ({
   ][i % 10]}`,
   duration: ['2:03', '4:35', '2:22', '7:05'][i % 10],
   thumbnail: '/elixir-cover.png',
-  videoUrl: `https://elixir-movies.s3.us-east-2.amazonaws.com/elixir-${i + 1}.mp4`,
+  videoUrl: `https://curso-tio-rick.s3.us-east-1.amazonaws.com/aula-${i + 1}.mp4?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=ASIAYSMQWWSDYTMTCOFK%2F20250707%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250707T110346Z&X-Amz-Expires=300&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEGsaCXVzLWVhc3QtMSJGMEQCIFtwA0VpZUk9I5ItG1ucymNnU0YPDvDALkR9BSxyXkLgAiAUyLInGYUSs08TBCVx1g7h3QD7ecVMkYzyqyz%2Fw1Qh1CraAgh0EAMaDDU4OTI1MDg2ODM1OSIMne6AZZLdtgVW%2Fc3PKrcCRuqegEkVHYBxqxlUfco2BIeV8ayFPNZivvmF19ta0qrM4rPrkLiWCCf32wZzBMdeTgHjWdBlGKcBkZsn0r7tl%2BTx%2BeBLSF5cEEyyliimSEy0zTyxVHLtWnfq94Ci4w3g6tbOuLEKyrEP6qdrwxA%2BICjDNUhjm1D3ywItD2MjNBsvQ3QtT8aMa8gQNmYKl%2B3B9aRqYLEjRU4l%2BaFEiMDsQzeORleQuyhNaP0i9QXKPBfmt0lKoqV2KI4YmtTOh9f%2Bv9fslzx1mkz6FmGuwE5IFZf1%2FvXraJEPg6uOdaKrod8I%2BPj60jH2qW8PZWmOgLlUsPY%2BuizyNc%2FqV5veBcuNPLrgmSaEBL0BGa22iSiI98C6ZSoyzlRNI3UZjTT%2Fsd158JxY8ptJbHlpk6Wovp0Q%2Fb5G9B2jgIIw8rWuwwY6rgIb1oFovKVvGUplNeNWtoZugHAZ0dYvxDyPI4ETX4Qh7o%2BQxtobMaAdAjR%2BB9jbJZ4zQvKe3NIKYCkNQNnHgP6ngmESz4u5XodkKeHK9aaG4QrqbfPcuzG9jaLoPM169c5i1dgQIa6FmT5tinf9q7R0BMsBXlB6HGb73x0CBYCB1yW8X%2FrEU5wV1rfzcKFgCafQFcyGCQEyPXf7rJ0ikjm7%2F5HT5Jk1fELJ%2FyWpKkmrlsPH1ByeQJjvAEk2StORToRqtq488rj%2Be92akq7u9aW5TkLBbUH7rcLsoxb8aHOgNO1CHjXnG7zgqzV5Hm7gY2U1OdU%2Bcyb0gN7nm07uf4RSmrucLQs74b5Vd%2FkNTtIIv9VbHjid1OFcCgwk5D8ifsj311mOhuOK2pl6jGR%2FPw%3D%3D&X-Amz-Signature=f9a3bb8dce7d6201cf94df56fcf0f0de1059ba2cc4363113dbc70cdacfc931f5&X-Amz-SignedHeaders=host&response-content-disposition=inline`,
   videoTrack: `/translates/elixir-${i + 1}.vtt`,
   description: [
     '',
@@ -66,7 +66,7 @@ function App() {
 
   const [chatOpen, setChatOpen] = useState(false);
   const [messages, setMessages] = useState([
-    { from: 'druix', text: 'Oi! Eu sou a Druix, mestre druida da linguagem Elixir. Como posso orientá-lo, meu jovem aprendiz?' }
+    { from: 'druix', text: 'Oi! Eu sou a Druix, mestre druida das linguagens de programação. Como posso orientá-lo, meu jovem aprendiz?' }
   ]);
   const [input, setInput] = useState('');
   const [loading, setLoading] = useState(false);
@@ -83,7 +83,7 @@ function App() {
       // 1. Envia para OpenAI para resposta
       const systemPrompt = {
         role: 'system',
-        content: `Você é Druix, um mestre druida da linguagem Elixir e da programação funcional. Sua missão é guiar aprendizes pelos caminhos do conhecimento com paciência, sabedoria e um toque místico. 
+        content: `Você é Druix, um mestre druida das linguagens de programação e da programação orientada a objetos. Sua missão é guiar aprendizes pelos caminhos do conhecimento com paciência, sabedoria e um toque místico. 
                   Fale sempre de forma inspiradora, como um mentor antigo, usando metáforas mágicas e analogias naturais (como árvores, rios, runas, feitiços).
                   Explique os conceitos com profundidade, mas de maneira clara e acessível, como se estivesse ensinando a um novo aprendiz.
                   Nunca use gírias modernas ou termos técnicos sem antes explicá-los.
@@ -219,7 +219,7 @@ function App() {
             <br />
             <h2 className="text-xl font-bold mb-4">Lista de Aulas</h2>
             <div className="space-y-4">
-              {filteredLessons.slice(0, 4).map(lesson => (
+              {filteredLessons.slice(0, 1).map(lesson => (
                 <button
                   key={lesson.id}
                   onClick={() => setCurrentLesson(lesson)}
@@ -298,7 +298,7 @@ function App() {
           <div>
             <h2 className="text-purple-400 text-lg font-semibold mb-2">Sobre o Curso</h2>
             <p className="text-sm leading-relaxed">
-              Uma plataforma encantada, forjada para guiar aprendizes pela arte ancestral da linguagem <span className="text-purple-400 font-medium">Elixir</span>.
+              Uma plataforma encantada, forjada para guiar aprendizes pela arte ancestral da linguagem <span className="text-purple-400 font-medium">Programação</span>.
               Cada feitiço — digo, lição — foi moldado para promover clareza, boas práticas e evolução contínua.
               Aqui, o conhecimento é passado de mestre para aprendiz... até que a magia do código flua em suas mãos.
             </p>
