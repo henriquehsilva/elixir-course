@@ -24,7 +24,7 @@ const lessons: Lesson[] = Array.from({ length: 20 }, (_, i) => ({
   title: `Aula ${i + 1}: ${[
     'Introdução à Programação com Tio Rick',
     'Primeira Live de Mentoria – Curso de Programação do Tio Rick',
-    'Introdução',
+    'Introdução aos Números em Ruby',
     'IEX e o Mundo Mágico',
     'Generics Avançados',
     'Decorators',
@@ -219,7 +219,7 @@ function App() {
             <br />
             <h2 className="text-xl font-bold mb-4">Lista de Aulas</h2>
             <div className="space-y-4">
-              {filteredLessons.slice(0, 2).map(lesson => (
+              {filteredLessons.slice(0, 3).map(lesson => (
                 <button
                   key={lesson.id}
                   onClick={() => setCurrentLesson(lesson)}
